@@ -1,0 +1,24 @@
+{
+  "name": "offline-pr-gen",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "offline-pr-gen": "./src/cli.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nikk151/offline-pr-gen.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/nikk151/offline-pr-gen/issues"
+  },
+  "homepage": "https://github.com/nikk151/offline-pr-gen#readme"
+}
