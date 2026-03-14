@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/nikk151/offline-pr-gen/issues"
   },
-  "homepage": "https://github.com/nikk151/offline-pr-gen#readme"
+  "homepage": "https://github.com/nikk151/offline-pr-gen#readme",
+  "dependencies": {
+    "commander": "^14.0.3"
+  }
 }
