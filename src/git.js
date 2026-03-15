@@ -1,4 +1,4 @@
-const {execSync}= require('child_process')
+import { execSync } from 'child_process'
 
 
 function gitDiff(staged){
@@ -14,4 +14,4 @@ function gitDiff(staged){
     }
 }
 
-module.exports = {gitDiff}
+export {gitDiff}

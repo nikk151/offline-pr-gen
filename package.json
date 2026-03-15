@@ -16,12 +16,14 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/nikk151/offline-pr-gen/issues"
   },
   "homepage": "https://github.com/nikk151/offline-pr-gen#readme",
   "dependencies": {
-    "commander": "^14.0.3"
+    "clipboardy": "^5.3.1",
+    "commander": "^14.0.3",
+    "ora": "^9.3.0"
   }
 }

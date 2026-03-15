@@ -6,7 +6,7 @@ function sanitizeDiff(diff){
     const finalString = []
     let isGarbage = false
 
-    const junkPatterns = /(package-lock\.json|yarn\.lock|node_modules\/|\.env|\.png|\.jpg|\.gif|\.svg|\.jpeg|\.webp|\.ico)/i; 
+    const junkPatterns = /(package-lock\.json|yarn\.lock|node_modules\/|\.env|\.png|\.jpg|\.gif|\.svg|\.jpeg|\.webp|\.ico|\.gitignore)/i; 
 
     for (const line of lines){
 
@@ -30,4 +30,5 @@ function sanitizeDiff(diff){
 }
 
 
-module.exports = {sanitizeDiff}
+export {sanitizeDiff}
+
