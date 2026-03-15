@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "bin": {
-    "offline-pr-gen": "./src/cli.js"
+    "offline-pr-gen": "src/cli.js",
+    "oprg": "src/cli.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

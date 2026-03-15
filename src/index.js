@@ -8,7 +8,6 @@ export async function runPRGenerator(options) {
     const diff = gitDiff(options.staged)
     const sanitizedDiff = sanitizeDiff(diff)
     if (sanitizedDiff.length !== 0) {
-        console.log("DIFF LENGTH:", sanitizedDiff.length)
         const spinner = ora('Connecting to Ollama... (0s)').start()
         
         let seconds = 0;
