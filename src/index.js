@@ -17,7 +17,13 @@ export async function runPRGenerator(options) {
 
             let message = "Connecting to Ollama...";
 
-            if (seconds > 60){
+            if(seconds > 600){
+                message = "Maximum wait time reached (10 minutes). If it still fails, it's due to hardware constraints.";
+            }
+            else if(seconds > 300){
+                message = "Heavy RAM swap in progress... (this can take up to 10 minutes on low RAM)";
+            }
+            else if (seconds > 60){
                 message = "Heavy RAM swap in progress... (this can take up to 5 minutes on low RAM)";
             }
             else if (seconds > 30){

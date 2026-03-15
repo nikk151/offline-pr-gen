@@ -3,6 +3,9 @@
 async function generatePR(diff, model = "qwen2.5-coder:1.5b", reason) {
     try {
 
+        const controller = new AbortController()
+        const timeout = setTimeout(() => controller.abort(), 600000) // 10 minutes timeout
+
         // The ultra-strict, token-optimized system prompt
         const prompt = `Write a Pull Request condition based on the GIT DIFF below. 
 
@@ -32,14 +35,21 @@ Output Format:
                 model: model,
                 prompt: prompt,
                 stream: true
-            })
+            }),
+            signal: controller.signal
         });
+
+        clearTimeout(timeout);
 
         // Extract and return the AI's markdown string
         
         return response;
         
     } catch (error) {
+        clearTimeout(timeout);
+        if (error.name === 'AbortError') {
+            throw new Error(`Ollama connection failed: Time out. Cannot support due to hardware constraints.`);
+        }
         throw new Error(`Ollama connection failed: ${error.message} (Cause: ${error.cause})`);
     }
 }
