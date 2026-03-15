@@ -4,30 +4,26 @@ async function generatePR(diff, model = "qwen2.5-coder:1.5b", reason) {
     try {
 
         // The ultra-strict, token-optimized system prompt
-        const prompt = `You are a strict, expert software engineer. Generate a clear and professional Pull Request description based on the provided Git diff.
+        const prompt = `Write a Pull Request condition based on the GIT DIFF below. 
 
-CRITICAL INSTRUCTIONS:
-1. OUTPUT EXACTLY THE MARKDOWN FORMAT PROVIDED BELOW. DO NOT add any conversational text, introductory remarks, or explanations.
-2. Focus on the *WHY* (the problem and the rationale), not just the *WHAT* (the code changes).
-3. Be highly concise. No fluff.
+Instructions:
+- Do not output any raw code blocks.
+- List every modified file in the Changes section.
+- User reason for changes: "${reason}"
 
-DIFF DATA:
+GIT DIFF:
 ${diff}
 
-USER REASON FOR CHANGES (if provided, incorporate this context):
-"${reason}"
-
-REQUIRED OUTPUT MARKDOWN FORMAT:
-
-**Title:** <feat|fix|chore|refactor|docs|test>: <short, descriptive summary>
-
-**Description:**
-<concise sentences explaining the core problem, the context, and how this PR resolves it>
-
+Output Format:
+**Title:** <feat|fix|chore>: <summary>
+**Description:** <description>
 **Changes Included:**
-* \`<file path>\`: <brief, precise technical detail of what changed and its impact>
-* \`<file path>\`: <brief, precise technical detail of what changed and its impact>
+- \`<file 1>\`: <summary>
+- \`<file 2>\`: <summary>
+... [continue for every single file in the diff]
+
 `;
+
 
         // The HTTP request to the local Ollama server
         const response = await fetch("http://localhost:11434/api/generate", {
